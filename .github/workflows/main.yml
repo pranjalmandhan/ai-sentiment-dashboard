@@ -2,13 +2,17 @@ name: Daily Data Update
 
 on:
   workflow_dispatch: 
+  schedule:
+    - cron: '0 0 * * *' 
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -22,5 +26,5 @@ jobs:
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
           git add data/daily_sentiment.csv
-          git commit -m "Automated data update" || exit 0
+          git commit -m "Automated data update" || echo "No changes to commit"
           git push
