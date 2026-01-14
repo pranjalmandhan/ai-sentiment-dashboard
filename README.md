@@ -1,5 +1,6 @@
 # 🤖 AI Sentiment Pulse: Automated News Analysis Dashboard
-[![Live App](https://img.shields.io/badge/Status-Live_Dashboard-brightgreen)](PASTE_YOUR_STREAMLIT_URL_HERE)
+
+[![Live App](https://img.shields.io/badge/Status-Live_Dashboard-brightgreen)](https://ai-sentiment-dashboard-g6l4nvphluyvfal92zxtfd.streamlit.app/)
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Automation](https://img.shields.io/badge/Pipeline-GitHub_Actions-orange)](https://github.com/features/actions)
 
@@ -27,5 +28,3 @@ In the fast-paced AI industry, market sentiment shifts daily. This project provi
 2. Install dependencies: `pip install -r requirements.txt`.
 3. Run the dashboard: `streamlit run src/app.py`.
 
----
-*Developed to demonstrate end-to-end pipeline automation and data storytelling.*
