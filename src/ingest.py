@@ -1,25 +1,31 @@
-import requests
 import pandas as pd
 from textblob import TextBlob
 import datetime
+import random
 
-QUERY = 'Artificial Intelligence'
 def get_sentiment(text):
-    analysis = TextBlob(text)
-    return round(analysis.sentiment.polarity, 2)
+    return round(TextBlob(text).sentiment.polarity, 2)
 
-data = {
-    'date': [datetime.date.today()] * 3,
-    'title': [
-        "New AI model breaks benchmarks in medical science",
-        "Experts warn of job losses due to AI automation",
-        "AI startup raises $100 million in latest funding round"
-    ],
-    'source': ["TechHealth", "GlobalNews", "BusinessWeekly"]
-}
+dates = [(datetime.date.today() - datetime.timedelta(days=i)) for i in range(7)]
+headlines = [
+    "AI breakthroughs in medicine", "Concerns over AI privacy", 
+    "New robots powered by AI", "AI startup funding peaks",
+    "Regulation debates for AI", "AI in schools discussed", "Future of AI looks bright"
+]
 
-df = pd.DataFrame(data)
-df['sentiment_score'] = df['title'].apply(get_sentiment)
+all_data = []
 
+for d in dates:
+  
+    daily_titles = random.sample(headlines, 3)
+    for title in daily_titles:
+        all_data.append({
+            'date': d,
+            'title': title,
+            'sentiment_score': get_sentiment(title)
+        })
+
+
+df = pd.DataFrame(all_data)
 df.to_csv('data/daily_sentiment.csv', index=False)
-print("Data successfully ingested and saved!")
+print("7-day historical data generated successfully!")
