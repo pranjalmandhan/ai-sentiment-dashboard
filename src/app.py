@@ -1,22 +1,33 @@
 import streamlit as st
 import pandas as pd
 
-st.set_page_config(page_title="AI Sentiment Tracker", page_icon="🤖")
 
-st.title("AI News Sentiment Dashboard")
-st.markdown("This dashboard tracks the mood of the latest AI news headlines.")
+st.set_page_config(page_title="AI Sentiment Tracker", layout="wide")
+st.title("🤖 AI News Sentiment & Trend Analysis")
+
 
 try:
     df = pd.read_csv('data/daily_sentiment.csv')
-   
-    avg_score = df['sentiment_score'].mean()
-    st.metric(label="Average Sentiment Score", value=avg_score, delta="Positive" if avg_score > 0 else "Negative")
+    df['date'] = pd.to_datetime(df['date']) # Ensure date is a date object
+    
+ 
+    st.sidebar.header("Filter Options")
+    search_query = st.sidebar.text_input("Search Headlines", "")
+    
+    if search_query:
+        df = df[df['title'].str.contains(search_query, case=False)]
 
-    st.subheader("Latest Headlines & Scores")
-    st.dataframe(df)
+    avg_sentiment = df['sentiment_score'].mean()
+    col1, col2 = st.columns(2)
+    col1.metric("Average Mood", f"{avg_sentiment:.2f}")
+    col2.metric("Total Headlines Analyzed", len(df))
 
-    st.subheader("Sentiment Distribution")
-    st.bar_chart(df['sentiment_score'])
+    st.subheader("Sentiment Trend Over Time")
+    chart_data = df.groupby('date')['sentiment_score'].mean()
+    st.line_chart(chart_data)
+
+    st.subheader("Latest News Data")
+    st.dataframe(df.sort_values(by='date', ascending=False), use_container_width=True)
 
 except FileNotFoundError:
-    st.error("No data found! Please run the ingest script first.")
+    st.error("⚠️ Data file not found. Please run the GitHub Action first!")
