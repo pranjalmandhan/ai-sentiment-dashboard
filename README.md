@@ -27,5 +27,4 @@ In the fast-paced AI industry, market sentiment shifts daily. This project provi
 2. Install dependencies: `pip install -r requirements.txt`.
 3. Run the dashboard: `streamlit run src/app.py`.
 
----
-*Created as part of my Data Analyst Portfolio to demonstrate end-to-end pipeline development.*
+
