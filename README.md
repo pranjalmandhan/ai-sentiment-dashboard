@@ -8,23 +8,24 @@ In the fast-paced AI industry, market sentiment shifts daily. This project provi
 
 ### Key Insights
 - **Automated Trend Detection:** Tracks sentiment fluctuations across 20+ headlines daily.
-- **Industry Pulse:** Calculated a current average sentiment score of **0.04**, indicating a neutral-to-positive market outlook.
+- **Sentiment Volatility:** Quantifies how news regarding "Regulation" vs "Breakthroughs" moves the market score.
 
 ## Technical Stack
 - **Languages:** Python (Pandas for data manipulation).
 - **NLP:** TextBlob for Natural Language Processing (Polarity Scoring).
 - **Frontend:** Streamlit for interactive data visualization.
-- **Automation:** GitHub Actions CI/CD pipeline for daily data ingestion.
+- **Automation:** GitHub Actions CI/CD pipeline for 24/7 data ingestion.
 
 ## Project Structure
 - `src/app.py`: The interactive dashboard code.
 - `src/ingest.py`: The data collection and NLP processing engine.
 - `data/daily_sentiment.csv`: Automated time-series storage.
-- `.github/workflows/`: Automation scripts for 24/7 updates.
+- `.github/workflows/`: Automation scripts for daily updates.
 
 ## How to Run Locally
-1. Clone this repo: `git clone https://github.com/YOUR_USERNAME/ai-sentiment-dashboard.git`.
+1. Clone this repo: `git clone https://github.com/pranjalmandhan/ai-sentiment-dashboard.git`.
 2. Install dependencies: `pip install -r requirements.txt`.
 3. Run the dashboard: `streamlit run src/app.py`.
 
-
+---
+*Developed to demonstrate end-to-end pipeline automation and data storytelling.*
