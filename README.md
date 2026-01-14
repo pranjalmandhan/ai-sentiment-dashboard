@@ -1,4 +1,4 @@
-# AI Sentiment Pulse Dashboard
+# 🤖 AI Sentiment Pulse Dashboard
 An end-to-end data analysis project tracking the daily "mood" of AI news.
 
 ## Project Overview
