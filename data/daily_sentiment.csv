@@ -1,4 +1,22 @@
-date,title,source,sentiment_score
-2026-01-14,New AI model breaks benchmarks in medical science,TechHealth,0.07
-2026-01-14,Experts warn of job losses due to AI automation,GlobalNews,-0.12
-2026-01-14,AI startup raises $100 million in latest funding round,BusinessWeekly,0.15
+date,title,sentiment_score
+2026-01-14,New robots powered by AI,0.14
+2026-01-14,AI in schools discussed,0.0
+2026-01-14,Concerns over AI privacy,0.0
+2026-01-13,New robots powered by AI,0.14
+2026-01-13,AI in schools discussed,0.0
+2026-01-13,AI breakthroughs in medicine,0.0
+2026-01-12,AI in schools discussed,0.0
+2026-01-12,New robots powered by AI,0.14
+2026-01-12,AI startup funding peaks,0.0
+2026-01-11,AI breakthroughs in medicine,0.0
+2026-01-11,AI startup funding peaks,0.0
+2026-01-11,Concerns over AI privacy,0.0
+2026-01-10,Regulation debates for AI,0.0
+2026-01-10,Concerns over AI privacy,0.0
+2026-01-10,AI in schools discussed,0.0
+2026-01-09,AI startup funding peaks,0.0
+2026-01-09,Future of AI looks bright,0.35
+2026-01-09,Concerns over AI privacy,0.0
+2026-01-08,AI startup funding peaks,0.0
+2026-01-08,AI in schools discussed,0.0
+2026-01-08,Regulation debates for AI,0.0
