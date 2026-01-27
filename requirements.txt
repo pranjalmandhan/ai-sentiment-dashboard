@@ -3,3 +3,4 @@ requests
 streamlit
 torch
 transformers
+plotly
