@@ -1,30 +1,42 @@
-# 🤖 AI Sentiment Pulse: Automated News Analysis Dashboard
+#  AI Sentiment Pulse: Automated News Analysis Dashboard
+> **A high-frequency ETL pipeline and real-time sentiment analysis engine for the AI industry.**
 
-[![Live App](https://img.shields.io/badge/Status-Live_Dashboard-brightgreen)](https://ai-sentiment-dashboard-g6l4nvphluyvfal92zxtfd.streamlit.app/)
-[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Automation](https://img.shields.io/badge/Pipeline-GitHub_Actions-orange)](https://github.com/features/actions)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ai-sentiment-dashboard-g6l4nvphluyvfal92zxtfd.streamlit.app/)
+![Python 3.11](https://img.shields.io/badge/Python-3.11-blue?logo=python)
+![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97-Hugging%20Face-yellow)
+![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-orange?logo=githubactions)
 
-## Business Case
-In the fast-paced AI industry, market sentiment shifts daily. This project provides a **quantifiable "Mood Metric"** by analyzing real-time news headlines. It helps stakeholders identify if the industry is currently in a "Hype" phase (positive) or a "Regulatory/Fear" phase (negative).
+##  Project Overview
+In the fast-moving AI industry, market sentiment shifts daily. This project provides a quantitative **"Mood Metric"** by analyzing real-time news headlines. It identifies if the current market is in a **"Hype Phase"** (Positive) or a **"Regulatory/Fear Phase"** (Negative) based on transformer-based language models.
 
-### Key Insights
-- **Automated Trend Detection:** Tracks sentiment fluctuations across 20+ headlines daily.
-- **Sentiment Volatility:** Quantifies how news regarding "Regulation" vs "Breakthroughs" moves the market score.
 
-## Technical Stack
-- **Languages:** Python (Pandas for data manipulation).
-- **NLP:** TextBlob for Natural Language Processing (Polarity Scoring).
-- **Frontend:** Streamlit for interactive data visualization.
-- **Automation:** GitHub Actions CI/CD pipeline for 24/7 data ingestion.
+##  Technical Architecture (The ETL Pipeline)
+This project follows a professional **Extract, Transform, Load (ETL)** architecture:
 
-## Project Structure
-- `src/app.py`: The interactive dashboard code.
-- `src/ingest.py`: The data collection and NLP processing engine.
-- `data/daily_sentiment.csv`: Automated time-series storage.
-- `.github/workflows/`: Automation scripts for daily updates.
+1.  **Extraction**: A Python-based ingestion script fetches real-time headlines from global news APIs.
+2.  **Transformation**: Data is processed through **FinBERT** (Financial BERT), a specialized transformer model from Hugging Face that out-performs general NLP models in business contexts.
+3.  **Loading**: Processed data (Sentiment Label + Confidence Score) is appended to a persistent CSV database with automatic version control.
+4.  **Visualization**: A **Streamlit** frontend pulls from the persistent storage to render live analytics.
 
-## How to Run Locally
-1. Clone this repo: `git clone https://github.com/pranjalmandhan/ai-sentiment-dashboard.git`.
-2. Install dependencies: `pip install -r requirements.txt`.
-3. Run the dashboard: `streamlit run src/app.py`.
+##  NLP Logic: Why FinBERT?
+Unlike basic libraries like TextBlob, **FinBERT** is pre-trained on a massive corpus of financial text.
+* **Precision**: It correctly identifies "Market volatility" or "Regulatory hurdles" as negative, whereas general models often label them as neutral.
+* **Confidence Scores**: The system outputs a mathematical probability (e.g., 0.99), ensuring the dashboard only reflects high-certainty data.
 
+
+##  Automation & DevOps
+To ensure 24/7 operation without manual intervention, this project utilizes **GitHub Actions**:
+* **CRON Scheduling**: The pipeline triggers every day at 00:00 UTC.
+* **Secret Management**: API credentials and environment variables are securely handled via GitHub Secrets.
+* **Automated Deployment**: Any push to the `main` branch or a data update via Actions automatically updates the live Streamlit site.
+
+##  Tech Stack
+* **Language**: Python 3.11
+* **Frameworks**: Streamlit, Plotly
+* **Libraries**: Transformers (Hugging Face), PyTorch, Pandas, Requests
+* **Infrastructure**: GitHub Actions, Streamlit Cloud
+
+##  Performance Summary
+* **Model**: `yiyanghkust/finbert-tone`
+* **Avg Confidence**: ~98.9%
+* **Data Latency**: Updated daily via automated workflows
